@@ -5,7 +5,7 @@ import { PowerIcon } from '@heroicons/react/24/outline';
 
 export default function TopNav() {
   return (
-    <div className="flex h-20 min-h-20 items-center justify-between px-4 bg-amber-200 md:px-6 border-b border-black-1000">
+    <div className="sticky top-0 z-50 flex h-20 min-h-20 items-center justify-between px-4 bg-amber-200 md:px-6 border-b border-black-1000 shadow-lg">
       {/* Logo Section */}
       <Link href="/" className="flex items-center">
         <div className="w-32 text-black md:w-40">
