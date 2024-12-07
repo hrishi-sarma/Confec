@@ -1,5 +1,7 @@
-import '@/app/ui/global.css';
-import Navbar from '@/app/nav/navBar'
+import '@/app/ui/global.css'; 
+import Navbar from '@/app/nav/navBar'; 
+import { CartProvider } from '@/app/context/CartContext'; 
+
 export default function RootLayout({
   children,
 }: {
@@ -8,10 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-
-        <Navbar></Navbar>
-        {children}
-        
+        <CartProvider>
+          <Navbar />
+          <main>{children}</main>
+        </CartProvider>
       </body>
     </html>
   );

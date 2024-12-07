@@ -11,7 +11,8 @@ import {
 const links = [
   { name: 'Home', href: '/', icon: HomeIcon },
   { name: 'Blogs', href: '/dashboard/blogs', icon: UserIcon },
-  { name: 'About', href: '/dashboard/about', icon: ShoppingCartIcon },
+  { name: 'Cart', href: '/cart', icon: ShoppingCartIcon },
+
 ];
 
 export default function NavLinks() {

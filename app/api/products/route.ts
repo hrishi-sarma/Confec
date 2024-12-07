@@ -1,5 +1,3 @@
-// app/api/products/route.ts
-
 export async function GET(request: Request) {
     const productsData = [
       { id: 1, image: '/p1.jpg', title: 'Product 1', price: '130.00' },
