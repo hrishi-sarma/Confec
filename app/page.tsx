@@ -9,7 +9,7 @@ import 'leaflet/dist/leaflet.css';
 export default function Page() {
   const [products, setProducts] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const { addToCart } = useCart();
+  const { cart, incrementQuantity, decrementQuantity } = useCart();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -20,6 +20,11 @@ export default function Page() {
 
     fetchProducts();
   }, [searchQuery]);
+
+  const getProductQuantity = (id: number) => {
+    const item = cart.find((cartItem) => cartItem.id === id);
+    return item ? item.quantity : 0;
+  };
 
   return (
     <main className="flex min-h-screen flex-col p-6 space-y-6">
@@ -67,13 +72,24 @@ export default function Page() {
                   <h3 className="font-bold text-lg">{product.title}</h3>
                   <div className="flex items-center justify-between mt-2">
                     <p className="text-gray-600">${product.price}</p>
+                  </div>
 
-                    {/* Add to Cart Button */}
+                  {/* Increment/Decrement Controls */}
+                  <div className="flex items-center justify-center mt-4 gap-4">
+                    <button
+                      className="px-4 py-1 bg-gray-200 text-black text-sm font-medium rounded-md hover:bg-gray-300"
+                      onClick={() => decrementQuantity(product.id)}
+                    >
+                      -
+                    </button>
+                    <span className="text-lg font-bold">
+                      {getProductQuantity(product.id)}
+                    </span>
                     <button
                       className="px-4 py-1 bg-amber-300 text-black text-sm font-medium rounded-md hover:bg-amber-200"
-                      onClick={() => addToCart(product)}
+                      onClick={() => incrementQuantity(product)}
                     >
-                      Add to Cart
+                      +
                     </button>
                   </div>
                 </div>
